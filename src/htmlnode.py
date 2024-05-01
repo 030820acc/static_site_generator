@@ -20,7 +20,7 @@ class HTMLNode():
 
 class LeafNode(HTMLNode):
     def __init__(self, value, props=None, tag=None):
-        super().__init__(tag=tag, value=value, children=None, props=props)
+        super().__init__(tag=tag, value=value, props=props)
 
     def to_html(self):
         return_string = ""
@@ -32,3 +32,11 @@ class LeafNode(HTMLNode):
         if self.tag != None:
             return_string += f'</{self.tag}>'
         return return_string
+
+
+class ParentNode(HTMLNode):
+    def __init__(self, tag, children, props=None):
+        super().__init__(tag=tag, children=children, props=props)
+    
+    def to_html(self):
+        pass
