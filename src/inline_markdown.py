@@ -89,4 +89,16 @@ def extract_markdown_links(text):
 
 
 def text_to_textnodes(text):
-    pass
+    base_node = TextNode(text, text_type_text)
+    bold_nodes = split_nodes_delimiter([base_node], "**", text_type_bold)
+    italic_nodes = split_nodes_delimiter(bold_nodes, "*", text_type_italic)
+    code_nodes = split_nodes_delimiter(italic_nodes, "`", text_type_code)
+    image_nodes = split_nodes_image(code_nodes)
+    link_nodes = split_nodes_link(image_nodes)
+    return link_nodes
+
+
+def markdown_to_blocks(markdown):
+    line_list = markdown.splitlines()
+    filtered_list = filter(lambda x: len(x) > 0, line_list)
+    return filtered_list
