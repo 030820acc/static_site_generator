@@ -81,11 +81,11 @@ def split_nodes_link(old_nodes):
 
 
 def extract_markdown_images(text):
-    return re.findall(r"!\[(.*?)\]\((.*?)\)", text) 
+    return re.findall(r"!\[(.*?)\]\((.*?)\)", text)
 
 
 def extract_markdown_links(text):
-    return re.findall(r"\[(.*?)\]\((.*?)\)", text)     
+    return re.findall(r"\[(.*?)\]\((.*?)\)", text)
 
 
 def text_to_textnodes(text):
@@ -96,9 +96,3 @@ def text_to_textnodes(text):
     image_nodes = split_nodes_image(code_nodes)
     link_nodes = split_nodes_link(image_nodes)
     return link_nodes
-
-
-def markdown_to_blocks(markdown):
-    line_list = markdown.splitlines()
-    filtered_list = filter(lambda x: len(x) > 0, line_list)
-    return filtered_list

@@ -1,12 +1,12 @@
 import unittest
+
 from inline_markdown import (
     split_nodes_delimiter,
     extract_markdown_images,
     extract_markdown_links,
     text_to_textnodes,
     split_nodes_image,
-    split_nodes_link
-
+    split_nodes_link,
 )
 
 from textnode import (
@@ -18,6 +18,8 @@ from textnode import (
     text_type_image,
     text_type_link
 )
+
+from markdown_blocks import markdown_to_blocks
 
 
 class TestInlineMarkdown(unittest.TestCase):
@@ -155,7 +157,6 @@ class TestInlineMarkdown(unittest.TestCase):
                                 TextNode("link", text_type_link, "https://boot.dev"),
                             ]
                         )
-
 
 if __name__ == "__main__":
     unittest.main()
