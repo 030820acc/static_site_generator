@@ -42,5 +42,16 @@ class TestInlineMarkdown(unittest.TestCase):
         self.assertEqual(block_to_block_type(block_list[5]), "paragraph")
         self.assertEqual(block_to_block_type(block_list[6]), "paragraph")
 
+    def test_block_to_block_type(self):
+        test_md = "#######heading\n\n````codeblock``\n\n>>quotes\n\n** unordered list 1\n\n-- unordered list 2\n\n1.ordered list\n\nthis is just a paragraph"
+        block_list = markdown_to_blocks(test_md)
+        self.assertEqual(block_to_block_type(block_list[0]), "paragraph")
+        self.assertEqual(block_to_block_type(block_list[1]), "paragraph")
+        self.assertEqual(block_to_block_type(block_list[2]), "paragraph")
+        self.assertEqual(block_to_block_type(block_list[3]), "paragraph")
+        self.assertEqual(block_to_block_type(block_list[4]), "paragraph")
+        self.assertEqual(block_to_block_type(block_list[5]), "paragraph")
+        self.assertEqual(block_to_block_type(block_list[6]), "paragraph")
+
 if __name__ == "__main__":
     unittest.main()

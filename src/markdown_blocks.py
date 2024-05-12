@@ -14,15 +14,15 @@ def markdown_to_blocks(markdown):
     return trimmed_filtered_list
 
 def block_to_block_type(block):
-    if block[0] == "#":
+    if re.match(r"(#{1,6} )", block) != None: 
         return block_type_heading
-    elif "```" in block:
+    elif re.match(r"^(```[^`])", block) != None:
         return block_type_code
-    elif block[0] == ">":
+    elif re.match(r"^>[^>]", block) != None:
         return block_type_quote
-    elif "* " in block or "- " in block:
+    elif re.match(r"^(\* )", block) != None or re.match(r"^(- )", block) != None:
         return block_type_unordered_list
-    elif re.match(r"(\d\.)", block) != None:
+    elif re.match(r"^(\d+\. )", block) != None:
         return block_type_ordered_list
     else:
         return block_type_paragraph
